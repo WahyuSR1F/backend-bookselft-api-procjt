@@ -88,7 +88,49 @@ const addBooksHandler = (request, h) => {
   return response;
 };
 
+const getAllBooksHandler = (request, h) => {
+  const books = bookStorage;
+  const response = h.response({
+    status: 'success',
+    data: {
+      books,
+    },
+  });
+
+  response.code(200);
+  return response;
+};
+
+const getDetailBookHandler = (request, h) => {
+  // get id in path parameter
+  const { bookId } = request.params;
+  // get object with id result with filter
+  const resultBook = bookStorage.filter((books) => books.id === bookId)[0];
+  const book = resultBook;
+
+  // lets to check there books has found
+
+  if (book !== undefined) {
+    const response = h.response({
+      status: 'success',
+      message: 'buku ditemukan!!',
+      data: {
+        book,
+      },
+    });
+    response.code(200);
+    return response;
+  }
+
+  // fail
+  const response = h.response({
+    status: 'fail',
+    message: 'Buku tidak ditemukan',
+  });
+  response.code(404);
+  return response;
+};
 // eksports
 module.exports = {
-  addBooksHandler,
+  addBooksHandler, getAllBooksHandler, getDetailBookHandler,
 };
