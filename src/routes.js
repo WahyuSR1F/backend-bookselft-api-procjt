@@ -1,6 +1,12 @@
 // router handling  for aplication
 
-const { addBooksHandler, getAllBooksHandler, getDetailBookHandler } = require('./handler');
+const {
+  addBooksHandler,
+  getAllBooksHandler,
+  getDetailBookHandler,
+  editBooksHandler,
+  deleteBooksHandler,
+} = require('./handler');
 
 const routes = [
   {
@@ -19,9 +25,23 @@ const routes = [
   {
     method: 'GET',
     path: '/books/{bookId}',
-    // handler get detail books
+    // handler get detail book
     handler: getDetailBookHandler,
   },
+  {
+    method: 'PUT',
+    path: '/books/{bookId}',
+    // handler to Update book
+    handler: editBooksHandler,
+
+  },
+  {
+    method: 'DELETE',
+    path: '/books/{bookId}',
+    // handler to Delete book
+    handler: deleteBooksHandler,
+  },
+
 ];
 
 module.exports = routes;
