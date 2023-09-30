@@ -364,27 +364,6 @@ const deleteBooksHandler = (request, h) => {
   return response;
 };
 
-// Opsional Requirment
-const getBooksNameHandler = (request, h) => {
-  const { name } = request.query; // Mengambil nilai parameter 'name' dari query
-
-  // Logika untuk mencari buku dengan nama yang sesuai
-  const filteredBooks = bookStorage.filter((book) => (
-    book.name.toLowerCase().includes(name.toLowerCase())
-  ));
-
-  // Membuat respons sesuai dengan hasil pencarian
-  const response = h.response({
-    status: 'success',
-    data: {
-      books: filteredBooks,
-    },
-  });
-
-  response.code(200);
-  return response;
-};
-
 // eksports
 module.exports = {
   addBooksHandler,
@@ -392,5 +371,5 @@ module.exports = {
   getDetailBookHandler,
   editBooksHandler,
   deleteBooksHandler,
-  getBooksNameHandler,
+
 };
