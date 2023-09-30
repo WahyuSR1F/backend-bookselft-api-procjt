@@ -1,6 +1,7 @@
 // konfigurasi server
 
 const Hapi = require('@hapi/hapi');
+
 // import routes file
 const routes = require('./routes');
 
